@@ -1,0 +1,38 @@
+/* App.css */
+.App {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.crm-status {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white; /* Latar belakang tabel putih */
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Garis bawah pada setiap baris */
+}
+
+th {
+    background-color: #4A90E2; /* Warna header */
+    color: white; /* Warna teks pada header */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Warna saat hover */
+}
+
+tr:nth-child(even) {
+    background-color: white; /* Warna latar belakang baris genap tetap putih */
+}
