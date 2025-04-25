@@ -1103,9 +1103,10 @@ interface TaskProps {
   provided: any;
   onUpdateTask: (updatedTask: TaskT) => void;
   onDeleteTask: (id: string) => void;
+  hotreload: () => void
 }
 
-const Task = ({ task, provided, onUpdateTask, onDeleteTask }: TaskProps) => {
+const Task = ({ task, provided, onUpdateTask, onDeleteTask, hotreload }: TaskProps) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const openEditModal = () => setIsEditModalOpen(true);
@@ -1162,27 +1163,51 @@ const Task = ({ task, provided, onUpdateTask, onDeleteTask }: TaskProps) => {
   };
 
   const handleDeleteTask = async () => {
-    if (window.confirm(`Apakah anda ingin menghapus leads "${task.nama}"?`)) {
-      try {
-        console.log(`Deleting contact with ID: ${task.id_contact}`);  // Debugging line
-        await axios.delete(`http://localhost:3000/user/delete/contact/${task.id_contact}`);
-        onDeleteTask(task.id_contact);  // Update parent state to remove the contact
-        toast.success("Contact deleted successfully!", {
-          style: {
-            backgroundColor: 'red',  // Green background for success
-            color: '#fff',  // White text color
-          },
-        });
-      } catch (err) {
-        console.error('Error deleting task:', err);
-        toast.error('Error deleting contact. Please try again.', {
-          style: {
-            backgroundColor: '#f44336',  // Red background for error
-            color: '#fff',  // White text color
-          },
-        });
+    try {
+      if (window.confirm(`Apakah anda ingin menghapus leads ${task.nama}?`)) {
+        const response: any = await axios.delete(`http://localhost:3000/user/delete/contact/${task.id_contact}`);
+        if (response.status == 200) {
+          toast.success(response.data.message, {
+            style: {
+              backgroundColor: '#32a852',
+              color: '#fff',
+            }
+          })
+          hotreload();
+        }
+        if (response.status != 200) throw "Error on server";
+        console.log(response);
       }
+    } catch (error) {
+      console.error('Error deleting task:', error);
+      toast.error(error as string, {
+        style: {
+          backgroundColor: '#f44336',  // Red background for error
+          color: '#fff',  // White text color
+        },
+      });
     }
+    // if (window.confirm(`Apakah anda ingin menghapus leads "${task.nama}"?`)) {
+    //   try {
+    //     console.log(`Deleting contact with ID: ${task.id_contact}`);  // Debugging line
+    //     await axios.delete(`http://localhost:3000/user/delete/contact/${task.id_contact}`);
+    //     onDeleteTask(task.id_contact);  // Update parent state to remove the contact
+    //     toast.success("Contact deleted successfully!", {
+    //       style: {
+    //         backgroundColor: '#32a852',  // Green background for success
+    //         color: '#fff',  // White text color
+    //       },
+    //     });
+    //   } catch (err) {
+    //     console.error('Error deleting task:', err);
+    //     toast.error('Error deleting contact. Please try again.', {
+    //       style: {
+    //         backgroundColor: '#f44336',  // Red background for error
+    //         color: '#fff',  // White text color
+    //       },
+    //     });
+    //   }
+    // }
   };
 
   const handleUpdateTask = async (updatedTask: TaskT) => {

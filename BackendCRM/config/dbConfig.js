@@ -1,15 +1,16 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const dotenv = require('dotenv');
 const sequelize = require('sequelize')
 
 // Memuat variabel lingkungan dari .env
 dotenv.config();
 
+
 const dbConfig = mysql.createConnection({
     host: 'localhost',
-    database: 'crm',
+    port: '3306',
+    database: 'cms',
     user: process.env.USER,  // Menggunakan variabel lingkungan dengan fallback
-    password: process.env.PASSWORD || '' // Menggunakan variabel lingkungan dengan fallback
 });
 
 // Menghubungkan ke database
