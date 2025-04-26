@@ -157,18 +157,18 @@ const userData = async (req, res) => {
 
 const getKontak = (req, res) => {
   const query = `
-            SELECT 
-        kontak.id_contact AS id,
-        kontak.nama,
-        kontak.perusahaan,
-        kontak.no_telp,
-        kontak.email,
-        kontak.alamat,
-        kontak.produk,
-        kontak.jumlah,
-        kontak.harga,
-        kontak.catatan,
-        list.nama_list AS status,
+        SELECT 
+          kontak.id_contact AS id,
+          kontak.nama,
+          kontak.perusahaan,
+          kontak.no_telp,
+          kontak.email,
+          kontak.alamat,
+          kontak.produk,
+          kontak.jumlah,
+          kontak.harga,
+          kontak.catatan,
+          list.nama_list AS status,
         JSON_OBJECT(
             'title', sektor.nama_sektor,
             'bg', sektor.bg_color,  -- Correct field for background color
@@ -187,12 +187,8 @@ const getKontak = (req, res) => {
       console.error('Error fetching tasks:', error);
       return res.status(500).json({ status: 'error', message: 'Error fetching tasks', error });
     }
-
     // Parse sektor JSON for each contact
-    const tasks = results.map(task => ({
-      ...task,
-      sektor: task.sektor ? JSON.parse(task.sektor) : null,
-    }));
+    const tasks = Array.isArray(results) ? results : [];
 
     res.status(200).json({ status: 'ok', tasks });
   });

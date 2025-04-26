@@ -8,9 +8,10 @@ import Login from "../components/Login";
 import Profil from "../components/Profil/profil";
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Summary from "../components/Summary";
 
 const isLoggedIn = window.localStorage.getItem("loggedIn"); // Check if logged in
-  const userType = window.localStorage.getItem("userType");
+const userType = window.localStorage.getItem("userType");
 
 const routes: RouteObject[] = [
 	{
@@ -38,6 +39,10 @@ const routes: RouteObject[] = [
 			{
 				path: "laporan", // Route untuk halaman Laporan
 				element: <Laporan />,
+			},
+			{
+				path: 'summary-crm',
+				element: <Summary />
 			},
 			{
 				path: "Profil", // Route untuk halaman Laporan

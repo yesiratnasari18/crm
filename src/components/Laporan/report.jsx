@@ -652,6 +652,21 @@ const DataTable = () => {
     const [currentPage, setCurrentPage] = useState(1); // Current page state
     const [itemsPerPage, setItemsPerPage] = useState(5); // Items per page state
 
+    const fetchContact = async () => {
+        try {
+            const response = await axios.get(`http://localhost:3000/user/contact`)
+            if (response.status == 200) {
+                setData(response.data.data);
+                setLoading(false);
+            }
+            if (response.status != 200) {
+                throw "Error at Backend!";
+            }
+        } catch (error) {
+            console.log(`Error : ${error}`)
+        }
+    }
+
     useEffect(() => {
         axios.get('http://localhost:3000/user/contact')
             .then((response) => {

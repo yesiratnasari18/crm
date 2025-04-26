@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
 
 const Card = ({ title, percentage, color, bgColor, onPercentageChange }) => {
     return (
@@ -32,7 +31,7 @@ const Card = ({ title, percentage, color, bgColor, onPercentageChange }) => {
     );
 };
 
-const App = () => {
+const Summary = () => {
     const [stages, setStages] = useState([
         { title: "Prospecting", percentage: 20, color: "#00bcd4", bgColor: "bg-pastel-blue" },
         { title: "Contacting", percentage: 40, color: "#8e44ad", bgColor: "bg-pastel-purple" },
@@ -65,4 +64,5 @@ const App = () => {
     );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+export default <Summary/>
+// ReactDOM.render(<App />, document.getElementById('root'));
