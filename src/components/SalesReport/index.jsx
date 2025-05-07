@@ -60,7 +60,7 @@ const SalesReport = () => {
           ))}
         </tbody>
       </table>
-      <div className="text-lg font-semibold">Total Sales: {totalSales}</div>
+      <div className="text-lg font-semibold">Total Sales: Rp. {Intl.NumberFormat('id-ID').format(totalSales)}</div>
     </section>
   );
 };
