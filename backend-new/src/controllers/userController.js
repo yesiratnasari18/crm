@@ -1,6 +1,6 @@
 import { getAllUser, getUserById, createUser, updateUser, verifyPassword } from '../models/userModel';
 
-// Get all products
+// Get all users
 export const getUser = async (req, res) => {
   try {
     const user = await getAllUser();
@@ -10,11 +10,11 @@ export const getUser = async (req, res) => {
   }
 };
 
-// Get a product by ID
+// Get a user by ID
 export const getUserByIdController = async (req, res) => {
   const { id } = req.params;
   try {
-    const user = await getUserById(Number(id));
+    const user = await getUserByParams('id', Number(id));
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
@@ -24,7 +24,20 @@ export const getUserByIdController = async (req, res) => {
   }
 };
 
-// Create a new product
+export const getUserByEmailController = async (req, res) => {
+  const { email } = req.body;
+  try {
+    const user = await getUserByParams('email', email);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch user' });
+  }
+};
+
+// Create a new user
 export const createUserController = async (req, res) => {
   const { nama, email, password, roles } = req.body;
   try {

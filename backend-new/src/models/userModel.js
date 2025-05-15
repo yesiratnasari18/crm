@@ -7,10 +7,10 @@ export const getAllUser = async () => {
   return rows;
 };
 
-export const getUserById = async (id) => {
-  const [rows] = await db.execute('SELECT * FROM user WHERE id_user = ?', [id]);
+export const getUserByParams = async (params, data) => {
+  const [rows] = await db.execute(`SELECT * FROM user WHERE ${params} = ?`, [data]);
   return rows[0];
-};
+}
 
 export const createUser = async (user) => {
   const { nama, email, password, roles } = user;
