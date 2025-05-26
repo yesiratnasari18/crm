@@ -1,4 +1,4 @@
-import { getAllUser, getUserById, createUser, updateUser, verifyPassword } from '../models/userModel';
+import { getAllUser, createUser, updateUser } from '../models/userModel';
 
 // Get all users
 export const getUser = async (req, res) => {

@@ -32,6 +32,11 @@ const Sidebar = () => {
             icon: <GridOutline color="#555" width="22px" height="22px" />,
             path: "/contact",
         },
+         {
+            title: "Produk",
+            icon: <GridOutline color="#555" width="22px" height="22px" />,
+            path: "/produk",
+        },
         {
             title: "Bobot",
             icon: <CalculatorOutline color="#555" width="22px" height="22px" />,

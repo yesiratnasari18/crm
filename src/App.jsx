@@ -2,14 +2,14 @@ import React, { Suspense } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./layout";
 import LayoutAdmin from "./layout";
-import Boards from "./pages/Boards";
+import Boards from "./pages/boards/page";
 import Dashboard from "./components/Dashboard";
 // import Summary from "./components/Summary";
 import Contact from "./components/Contact/ContactCard";
 import SummaryCRM from "./components/Laporan/report";
 import Laporan from "./components/SalesReport";
 import Segmentasi from "./components/StrategiSegmentasi";
-import Login from "./components/Login";
+import Login from "./pages/auth/page";
 import Bobot from "./components/Bobot/KelolaBobot";
 import DAdmin from "./components/Admin/Dashboard";
 import KelolaUser from "./components/Admin/KelolaUser";
@@ -19,6 +19,7 @@ import ProtectedRoute from "./PrivateRoute";
 import { StyleSheetManager } from "styled-components";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ContactList from "./pages/contact/page";
 
 function App() {
   const isLoggedIn = localStorage.getItem("loggedIn") === "true";
@@ -47,7 +48,7 @@ function App() {
                       <Route path="/dashboard" element={<Dashboard />} />
                       {/* <Route path="/leads" element={<Summary />} /> */}
                       <Route path="/manageleads" element={<Boards />} />
-                      <Route path="/contact" element={<Contact />} />
+                      <Route path="/contact" element={<ContactList />} />
                       <Route path="/summary-crm" element={<SummaryCRM />} />
                       <Route path="/Laporan" element={<Laporan />} />
                       <Route path="/profil" element={<Profil />} />

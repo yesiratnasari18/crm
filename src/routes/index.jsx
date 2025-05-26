@@ -1,6 +1,6 @@
 import { RouteObject } from "react-router";
 import "../layout";
-import Boards from "../pages/Boards";
+import Boards from "../pages/boards/page";
 import Dashboard from "../components/Dashboard";
 import Contact from "../components/Contact";
 import Laporan from "../components/Laporan";
@@ -9,6 +9,7 @@ import Profil from "../components/Profil/profil";
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Summary from "../components/Summary";
+import ContactList from "../pages/contact/page";
 
 const isLoggedIn = window.localStorage.getItem("loggedIn"); // Check if logged in
 const userType = window.localStorage.getItem("userType");
@@ -34,7 +35,7 @@ const routes: RouteObject[] = [
 			},
 			{
 				path: "contact", // Route untuk halaman Contact
-				element: <Contact />,
+				element: <ContactList />,
 			},
 			{
 				path: "laporan", // Route untuk halaman Laporan

@@ -20,7 +20,7 @@ const envVariables: { [key: string]: string } = {
   DB_NAME: 'cms',
   DB_HOST: 'localhost',
   DB_USER: 'root',
-  DB_PASSWORD: '',
+  DB_PASSWORD: 'linear',
   PORT: '3000',
   SECRET_KEY: generateRandomToken(32)
 };

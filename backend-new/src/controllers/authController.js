@@ -16,6 +16,7 @@ export const login = async (req, res) => {
   try {
     // Cari pengguna berdasarkan email
     const user = await getUserByParams('email', email);
+    console.log(user);
     if (!user) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
@@ -34,7 +35,7 @@ export const login = async (req, res) => {
     );
 
     // Kirimkan token ke pengguna
-    res.json({ message: 'Login successful', token });
+    res.json({ message: 'Login successful', token, user: user });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });

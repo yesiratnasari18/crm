@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import apiRoute from './src/routes/api';
+import cors from "cors";
 
 console.log(process.env.DB_NAME);
 // Load environment variables from .env file
@@ -11,6 +12,7 @@ const app = express();
 
 // Middleware to parse JSON request body
 app.use(express.json());
+app.use(cors());
 
 app.use('/api', apiRoute);
 

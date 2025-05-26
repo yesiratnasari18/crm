@@ -1,6 +1,17 @@
 import React, { useState } from "react";
+import { Sektor } from "../../types/index";
 
-const AddModal = ({ isOpen, onClose, handleAddTask, sektorOptions }: any) => {
+const AddModal = ({
+  isOpen,
+  onClose,
+  handleAddTask,
+  sektorOptions
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  handleAddTask: () => void;
+  sektorOptions: Sektor[]
+}) => {
   const [taskData, setTaskData] = useState({
     nama: "",
     perusahaan: "",

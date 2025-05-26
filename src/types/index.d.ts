@@ -1,3 +1,11 @@
+export interface User {
+	id_user: number;
+	nama: string;
+	email: string;
+	password: string;
+	roles: string;
+}
+
 export type TaskT = {
 	id_contact: string;
 	nama: string;
@@ -16,6 +24,64 @@ type Column = {
 export type Columns = {
 	[key: string]: Column;
 };
+
+export interface Sektor {
+	id_sektor: number;
+	nama_sektor: string;
+	bg_color: string;
+	text_color: string;
+}
+
+export interface Transaksi {
+	id_transaksi: number;
+	id_list: number;
+	id_contact: number;
+	id_produk: number;
+	jumlah: number;
+	total_harga: number;
+	catatan: string;
+}
+
+export interface TaskType {
+  id_transaksi: number;
+  id_contact: number;
+  id_produk: number;
+  nama_list: string;
+  perusahaan: string;
+  nama_produk: string;
+  jumlah: number;
+  total_harga: number;
+  catatan: string;
+  add_date: string;
+  last_update: string;
+  last_update_status: string;
+  sektor: {
+    title: string;
+    bg: string;
+    text: string;
+  };
+}
+
+export interface ColumnType {
+  name: string;
+  items: TaskType[];
+}
+
+export interface Produk {
+	id_produk: number;
+	nama_produk: string;
+	harga_produk: string;
+}
+
+export interface Contact {
+	id_contact: number;
+	nama: string;
+	perusahaan: string;
+	email: string;
+	no_telp: string;
+	id_sektor: Sektor;
+	alamat: string;
+}
 
 
 // data.js
